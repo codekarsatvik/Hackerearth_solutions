@@ -1,7 +1,8 @@
 import React , {useState} from 'react'
 import {Link} from 'react-router-dom'
-import login from './login.module.css'
-import google from './google.svg'
+import login from './Css/login.module.css'
+import logo from './images/logo.svg'
+import google from './images/google.svg'
 
 const Login = () => {
     const [email,setEmail] = useState('');
@@ -11,6 +12,7 @@ const Login = () => {
             <article className={login.loginContainer}>
                 <form className={login.form}>      
                     <div className={login.formControl}>
+                         <img src={logo} className={login.logo} />
                         <input 
                             type='email'
                             value={email}
@@ -36,7 +38,7 @@ const Login = () => {
                     </div>
                     <h5>or</h5>
                     <div className={login.media} >
-                        <img src={google} alt='google' className={login.logo}></img>
+                        <img src={google} alt='google' className={login.logo_G}></img>
                         <p style={{textShadow: "0.5px 0.5px gray" , alignItems:"center" , marginLeft:"15px"}}>Continue with Google</p>
                     </div>
                 </form>

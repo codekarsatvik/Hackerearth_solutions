@@ -1,7 +1,7 @@
 import React , {useState} from 'react'
 import {Link} from 'react-router-dom'
-import login from './login.module.css'
-import google from './google.svg'
+import login from './Css/login.module.css'
+import google from './images/google.svg'
 import ImageUpload from './ImageUpload'
 
 const SignUp = () => {

@@ -1,6 +1,6 @@
 import React from 'react'
-import mainHeader from './mainHeader.module.css'
-import logo from './logo.svg'
+import mainHeader from './Css/mainHeader.module.css'
+import logo from './images/logo.svg'
 import {Link} from 'react-router-dom'
 
 const MainHeader = () => {

@@ -1,0 +1,33 @@
+.wrapper {
+  margin-bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  background-color: #301b3f;
+  justify-content: space-between;
+}
+
+.logos {
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+  width: 40px;
+  margin-left: 10px;
+}
+
+.wrap1 {
+  display: relative;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+}
+
+.wrap2 {
+  margin-right: 20px;
+  color: #ffffff;
+  margin-top: 0px;
+}

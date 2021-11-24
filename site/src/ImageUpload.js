@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import profile from './profile.svg'
-import login from './login.module.css'
+import profile from './images/profile.svg'
+import login from './Css/login.module.css'
 
 
 const ImageUpload = () => {
@@ -34,10 +34,10 @@ const ImageUpload = () => {
         onClick={() => imageUploader.current.click()}>
         <img
           ref={uploadedImage}
-          style={{width: "100%",height: "100%",}}
+          style={{width: "100%",height: "100%",borderRadius: "50px"}}
         />
       </div> 
-      <p style={{marginLeft:"10px", backgroundColor:"#4C4C6D", color:"#ffffff"}}>Upload</p>
+      <p style={{marginLeft:"10px", backgroundColor:"#4C4C6D", color:"#ffffff",borderRadius:"4px",padding:"1px",fontSize:"15px"}}>Upload</p>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import logo from './images/logo.svg';
 import MainHeader from './MainHeader';
 import Footer from './Footer';
 import Login from './Login.js'

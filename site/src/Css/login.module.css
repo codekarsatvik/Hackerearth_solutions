@@ -1,0 +1,100 @@
+.loginContainer {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  height: 90vh;
+  width: 100%;
+}
+
+.logo {
+  width: 130px;
+  height: 130px;
+  align-self: center;
+  margin-bottom: 15px;
+}
+
+.form {
+  width: 380px;
+  height: 450px;
+  background-color: #e8f6ef;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border-radius: 2%;
+}
+
+.formControl {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.form input {
+  background-color: #b8dfd8;
+  border-color: transparent;
+  padding: 0.5rem 0.5rem;
+  margin: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: "Montserrat";
+}
+
+.pass {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 10px;
+  margin-top: 0px;
+  font-family: ABeeZee;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrap {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 10px;
+  margin-left: auto;
+}
+
+.btnLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4c4c6d;
+  color: #ffffff;
+  width: 70px;
+  height: 40px;
+  border-radius: 5px;
+  margin-top: 2px;
+  margin-left: 10px;
+}
+
+.link {
+  text-decoration: none;
+  color: blue;
+}
+
+.media {
+  display: flex;
+  flex-direction: row;
+  background-color: #b8dfd8;
+  margin: 10px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.logo_G {
+  height: 20px;
+  width: 30px;
+}

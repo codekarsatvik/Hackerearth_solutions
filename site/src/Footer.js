@@ -1,9 +1,9 @@
 import React from 'react'
-import footer from './footer.module.css'
-import logo1 from './facebook.svg'
-import logo2 from './insta.svg'
-import logo3 from './twitter.svg'
-import logo4 from './publish.svg'
+import footer from './Css/footer.module.css'
+import logo1 from './images/facebook.svg'
+import logo2 from './images/insta.svg'
+import logo3 from './images/twitter.svg'
+import logo4 from './images/publish.svg'
 
 const Footer = () => {
     return (
