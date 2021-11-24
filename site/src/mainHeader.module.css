@@ -1,0 +1,33 @@
+.wrapper {
+  background-color: #301B3F;
+  display: flex;
+  height: 100px;
+  font-family: Brush Script MT, Brush Script Std, cursive;
+  color: #301B3F;
+}
+
+.logo {
+    width: 62px;
+    height: 64px;
+    margin-left: 25px;
+    margin-top: 18px;
+}
+
+.btns {
+    margin-left: auto;
+    margin-right: 20px;
+    margin-top: auto;
+    margin-bottom: 15px;
+}
+
+.btn {
+    margin-left: 30px;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: Barlow;
+    font-size: 24px;
+}
+
+.btn:hover {
+    font-size: 27px;
+}
