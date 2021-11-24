@@ -73,7 +73,7 @@ const SignUp = () => {
                     ref={imageUploader}
                     style={{display: "none"}}
                     />
-                <div style={{height: "100px", width: "100px", borderRadius: "50px",borderColor: "transparent", backgroundColor: "#B8DFD8"}}
+                <div style={{height: "100px", width: "100px", borderRadius: "50px",borderColor: "transparent", backgroundColor: "#B8DFD8",cursor:"pointer"}}
                 onClick={() => imageUploader.current.click()}>
                 {uploadedImage.current&&(<img
                 ref={uploadedImage}
