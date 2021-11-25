@@ -1,21 +1,23 @@
-import React , {useState,useEffect} from 'react'
-import {Link} from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import login from './Css/login.module.css'
 import google from './images/google.svg'
-import {db,storage} from "./firebase/config";
-import {collection,getDocs,addDoc,updateDoc,doc} from "firebase/firestore"
-import {ref,uploadBytesResumable,getDownloadURL} from "@firebase/storage"
-import {Def_img} from "./images/user-profile.jpg"
+import { db, storage } from "./firebase/config";
+import { collection, getDocs, addDoc, updateDoc, doc } from "firebase/firestore"
+import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage"
+
+const Def_img="https://firebasestorage.googleapis.com/v0/b/hackerearth-soln.appspot.com/o/user-profile.jpg?alt=media&token=0c308286-e24d-4176-a308-2a87901de3e3"
+
 
 const SignUp = () => {
-    const [firstName,setFirstName] = useState('');
-    const [lastName,setLastName] = useState('');
-    const [email,setEmail] = useState('');
-    const [password,setPassword] = useState('');
-    const [users,setUsers]=useState([]);
-    const [file,setFile]=useState(null);
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [users, setUsers] = useState([]);
+    const [url,setUrl]=useState('');
 
-    const usersRef=collection(db,"Users");
+    const usersRef = collection(db, "Users");
 
     // useEffect(() => {
     //    const getUsers=async()=>{
@@ -23,97 +25,80 @@ const SignUp = () => {
     //        setUsers(data.docs.map((doc)=>({...doc.data(),id:doc.id})));
     //        console.log(users)
     //    }
-        
+
     // },[])
 
 
-    const handler=(e)=>{
-        let sel=e.target.files;
+    const handler = (e) => {
+        let sel = e.target.files[0];
         console.log(sel);
-        if(sel)
-        {
-            setFile(sel);
+        if (sel) {
+            let val = Math.floor(new Date().valueOf() * Math.random());
+            const stref = ref(storage, `/files/${val}`);
+            const uploadTask = uploadBytesResumable(stref, sel);
+            uploadTask.on("state_changed", (snap) => { }, (err) => {}, () => {
+                getDownloadURL(uploadTask.snapshot.ref).then((link) => {
+                    setUrl(link);
+                    console.log(link);
+                });
+            })
         }
-        else
-        {
-            setFile(null);
+        else {
+            
         }
     }
 
-    const getUrl= async (file)=>{
-        
-    }
-
-
-    const handleUpload=(e)=>{
+    const handleUpload = (e) => {
         e.preventDefault();
-        console.log(file);
-        let url="";
-        if(file)
-        {
-            let val=Math.floor(new Date().valueOf() * Math.random());
-            const stref=ref(storage,`/files/${val}`);
-            const uploadTask=uploadBytesResumable(stref,file);
-            uploadTask.on("state_changed",(snap)=>{},(err)=>{},()=>{
-            getDownloadURL(uploadTask.snapshot.ref).then((link)=>{
-                url=link;
-                add(link);
-                console.log(link);
-            });})
-        }
-        //console.log(url);
-
-        const add=async(url)=>{        
+        const add = async () => {
             const docRef = await addDoc(collection(db, "Users"), {
-            firstName,lastName,email,password,url,"level":1
+                firstName, lastName, email, password, url, "level": 1
             });
             console.log(docRef.id);
         }
-        // add();
-        
+
     }
 
     return (
         <>
             <article className={login.loginContainer}>
                 <form className={login.form} onSubmit={handleUpload}>
-                    <input
-                    type="file"
-                    accept="image/*"
-                     onChange={(e)=>handler(e)}
-                    />
+                    <div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center"}}>
+                    {url?(<img src={url}  style={{width: "100px",height: "100px",borderRadius: "50px",alignSelf:"center"}} />):(<img src={Def_img}  style={{ width: "100px",height: "100px",borderRadius: "50px",alignSelf:"center"}} />)}
+                    <label className={login.btnLogin} style={{height:"30px",cursor:'pointer'}} > Upload<input type="file" accept="image/*" style={{display:"none"}} onChange={(e) => handler(e)}/></label>
+                    </div>
                     <div className={login.formControl}>
-                        <input 
+                        <input
                             type='text'
                             value={firstName}
                             placeholder='First Name'
-                            style={{borderStyle:"none"}}
-                            // required
+                            style={{ borderStyle: "none" }}
+                        required
                         />
-                        <input 
+                        <input
                             type='text'
                             value={lastName}
                             placeholder='Last Name'
-                            style={{borderStyle:"none"}}
+                            style={{ borderStyle: "none" }}
                             onChange={(e) => setLastName(e.target.value)
                             }
-                            // required
+                        required
                         />
-                        <input 
+                        <input
                             type='email'
                             value={email}
                             placeholder='Email'
-                            style={{borderStyle:"none"}}
+                            style={{ borderStyle: "none" }}
                             onChange={(e) => setEmail(e.target.value)}
-                            // required
+                        required
                         />
                         <input
                             type='password'
                             value={password}
                             placeholder='Password'
-                            style={{borderStyle:"none"}}
+                            style={{ borderStyle: "none" }}
                             onChange={(e) => setPassword(e.target.value)}
-                            // required
+                        required
                         />
                     </div>
                     <div className={login.wrapper}>
@@ -126,7 +111,7 @@ const SignUp = () => {
                 </form>
             </article>
         </>
-    )    
+    )
 }
 
 export default SignUp
