@@ -1,16 +1,53 @@
-import React , {useState} from 'react'
-import {Link} from 'react-router-dom'
+import React , {useState,useEffect,Redirect} from 'react'
+import {Link,useHistory} from 'react-router-dom'
 import login from './Css/login.module.css'
 import logo from './images/logo.svg'
 import google from './images/google.svg'
+import { db, storage } from "./firebase/config";
+import { collection, getDocs, addDoc, updateDoc, doc } from "firebase/firestore";
+
 
 const Login = () => {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
+    const [users,setUsers]=useState([]);
+    let history=useHistory();
+
+    useEffect(() => {
+        
+        const usersRef = collection(db, "Users");
+        const getUsers=async()=>{
+        const data=await getDocs(usersRef);
+        setUsers(data.docs.map((doc)=>({...doc.data(),id:doc.id})));
+        }
+        getUsers();
+
+    }, [])
+
+    const handler=(e)=>{
+        e.preventDefault();
+        let flag=false;
+        users.map((user)=>{
+            if(user.email==email&&password==user.password)
+            {
+                flag=true;
+            }
+        });
+        if(flag==false)
+        {
+
+        }
+        else
+        {
+           history.push("/",{authorized:true,email});
+        }
+    }
+
+
     return (
         <>
             <article className={login.loginContainer}>
-                <form className={login.form}>      
+                <form className={login.form} onSubmit={handler} >      
                     <div className={login.formControl}>
                          <img src={logo} className={login.logo} />
                         <input 

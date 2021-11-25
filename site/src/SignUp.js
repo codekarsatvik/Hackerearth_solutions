@@ -56,6 +56,8 @@ const SignUp = () => {
             });
             console.log(docRef.id);
         }
+        add();
+        console.log("Done");
 
     }
 
