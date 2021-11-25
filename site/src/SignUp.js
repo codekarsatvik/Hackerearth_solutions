@@ -73,6 +73,7 @@ const SignUp = () => {
                             value={firstName}
                             placeholder='First Name'
                             style={{ borderStyle: "none" }}
+                            onChange={(e) => setFirstName(e.target.value)}
                         required
                         />
                         <input
