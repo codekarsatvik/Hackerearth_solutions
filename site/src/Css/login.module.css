@@ -14,12 +14,20 @@
   margin-bottom: 15px;
 }
 
+.progressbar {
+  height: 2px;
+  margin-bottom: 30px;
+  display: flex;
+  background: #301b3f;
+}
+
 .form {
   width: 380px;
   height: 450px;
   background-color: #e8f6ef;
   padding: 20px;
-  display: flex;
+  padding-top: 0px;
+  display: absolute;
   flex-direction: column;
   justify-content: center;
   text-align: center;
