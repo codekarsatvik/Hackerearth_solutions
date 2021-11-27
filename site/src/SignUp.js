@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import Image from './UploadImage'
 import login from './Css/login.module.css'
 import google from './images/google.svg'
 import { db, storage } from "./firebase/config";
@@ -28,26 +29,6 @@ const SignUp = () => {
 
     // },[])
 
-
-    const handler = (e) => {
-        let sel = e.target.files[0];
-        console.log(sel);
-        if (sel) {
-            let val = Math.floor(new Date().valueOf() * Math.random());
-            const stref = ref(storage, `/files/${val}`);
-            const uploadTask = uploadBytesResumable(stref, sel);
-            uploadTask.on("state_changed", (snap) => { }, (err) => {}, () => {
-                getDownloadURL(uploadTask.snapshot.ref).then((link) => {
-                    setUrl(link);
-                    console.log(link);
-                });
-            })
-        }
-        else {
-            
-        }
-    }
-
     const handleUpload = (e) => {
         e.preventDefault();
         const add = async () => {
@@ -66,8 +47,7 @@ const SignUp = () => {
             <article className={login.loginContainer}>
                 <form className={login.form} onSubmit={handleUpload}>
                     <div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center"}}>
-                    {url?(<img src={url}  style={{width: "100px",height: "100px",borderRadius: "50px",alignSelf:"center"}} />):(<img src={Def_img}  style={{ width: "100px",height: "100px",borderRadius: "50px",alignSelf:"center"}} />)}
-                    <label className={login.btnLogin} style={{height:"30px",cursor:'pointer'}} > Upload<input type="file" accept="image/*" style={{display:"none"}} onChange={(e) => handler(e)}/></label>
+                        <Image def={Def_img} imge={url} setUrl={setUrl}/>
                     </div>
                     <div className={login.formControl}>
                         <input
