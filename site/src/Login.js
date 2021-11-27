@@ -27,10 +27,12 @@ const Login = () => {
     const handler=(e)=>{
         e.preventDefault();
         let flag=false;
+        let level=0;
         users.map((user)=>{
             if(user.email==email&&password==user.password)
             {
                 flag=true;
+                level=user.level;
             }
         });
         if(flag==false)
@@ -39,7 +41,7 @@ const Login = () => {
         }
         else
         {
-           history.push("/",{authorized:true,email});
+           history.push("/",{authorized:true,email,level});
         }
     }
 
