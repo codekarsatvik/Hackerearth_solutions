@@ -11,12 +11,17 @@ const MainHeader = () => {
         <div className={mainHeader.wrapper}>
             <img src={logo} alt='img' className={mainHeader.logo}></img>
             <div className={mainHeader.btns}>
-                <Link to='/' className={mainHeader.btn}>Home</Link>
-                <a href="/about" className={mainHeader.btn}>About</a>
-                {(!loc.state||(loc.state&&loc.state.authorized==false))&&<a href="/login" className={mainHeader.btn} >Login</a>}
-                {(loc.state&&loc.state.authorized==true)&&<a href="/login" className={mainHeader.btn} onClick={()=>{
+                <Link to={{ 
+                            pathname: '/', 
+                            state:loc.state 
+                            }} className={mainHeader.btn}>Home</Link>
+                <Link to={{ 
+                            pathname: '/about', 
+                            state:loc.state 
+                            }} className={mainHeader.btn}>About</Link>
+                {(loc.state&&loc.state.authorized===true)?(<a href="/login" className={mainHeader.btn} onClick={()=>{
                     loc.state.authorized=false;
-                }} >Logout</a>}
+                }} >Logout</a>):(<a href="/login" className={mainHeader.btn} >Login</a>)}
             </div>
         </div>
     )

@@ -5,21 +5,23 @@ import Image from '../UploadImage'
 import { db, storage } from "../firebase/config";
 import { collection, getDocs, addDoc, updateDoc, doc } from "firebase/firestore"
 import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage"
+import { useLocation } from 'react-router-dom';
 
 
 const Def_img="https://firebasestorage.googleapis.com/v0/b/hackerearth-soln.appspot.com/o/user-profile.jpg?alt=media&token=0c308286-e24d-4176-a308-2a87901de3e3"
 
 
-const Category = () => {
 
+const Subcategoryform = () => {
     const [url,setUrl]=useState('');
-    const [catName,setName]=useState('');
+    const [subName,setName]=useState('');
+    const loc=useLocation();
 
     const handleUpload = (e) => {
         e.preventDefault();
         const add = async () => {
-            const docRef = await addDoc(collection(db, "Category"), {
-                "CategoryName":catName,"CategoryImg":url
+            const docRef = await addDoc(collection(db, "Sub-category"), {
+                "CategoryId":loc.state.catID,"SubCategoryName":subName,"SubCategoryImg":url
             });
             console.log(docRef.id);
         }
@@ -67,14 +69,14 @@ const Category = () => {
                         </div>    
                         <input
                             type='text'
-                            placeholder='Enter category name'
+                            placeholder='Enter Sub Category name'
                             style={{marginTop:'20px'}}
-                            value={catName}
+                            value={subName}
                             onChange={(e)=>{
                                 setName(e.target.value);
                             }}
                         />  
-                        <button type='submit' className={login.btnLogin} style={{alignSelf:'center'}} >Add Category</button>
+                        <button type='submit' className={login.btnLogin} style={{alignSelf:'center',width:"auto"}} >Add Sub Category</button>
                     </div>
                 </form>
             </article>    
@@ -82,4 +84,4 @@ const Category = () => {
     )
 }
 
-export default Category
+export default Subcategoryform
