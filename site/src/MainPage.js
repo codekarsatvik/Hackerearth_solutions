@@ -40,7 +40,10 @@ const MainPage = () => {
 
             <label>
             {/* <div className={mainpage.plusCon}>  */}
-                <Link to='/category' className={mainpage.plusCon} ><img src={plus} className={mainpage.plus} /> </Link>
+                <Link to={{ 
+                            pathname: '/category', 
+                            state:loc.state 
+                            }} className={mainpage.plusCon} ><img src={plus} className={mainpage.plus} /> </Link>
             {/* </div> */}
             
             </label>

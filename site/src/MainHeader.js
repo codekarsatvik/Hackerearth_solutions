@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom'
 
 const MainHeader = () => {
     const loc=useLocation();
+    console.log(loc);
     return (
         <div className={mainHeader.wrapper}>
             <img src={logo} alt='img' className={mainHeader.logo}></img>
