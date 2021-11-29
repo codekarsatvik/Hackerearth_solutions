@@ -37,9 +37,13 @@ const MainPage = () => {
                     </div>
                 )
             })}
-            <div className={mainpage.plusCon}> 
-                <img src={plus} className={mainpage.plus} /> 
-            </div>
+
+            <label>
+            {/* <div className={mainpage.plusCon}>  */}
+                <Link to='/category' className={mainpage.plusCon} ><img src={plus} className={mainpage.plus} /> </Link>
+            {/* </div> */}
+            
+            </label>
             </div>
         </div>
     )
