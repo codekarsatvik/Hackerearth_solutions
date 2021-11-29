@@ -6,6 +6,7 @@ import SignUp from './SignUp.js'
 import {Route, Switch} from 'react-router-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 import MainPage from './MainPage';
+import Category from './Forms/category';
 
 function App() {
   return (
@@ -16,6 +17,11 @@ function App() {
             <MainHeader/>
             <MainPage />
             <Footer/>
+          </Route>
+          <Route path='/category'> 
+              <MainHeader />
+              <Category/> 
+              <Footer/>
           </Route>
           <Route path='/login'> 
               <MainHeader />

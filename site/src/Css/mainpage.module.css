@@ -1,0 +1,61 @@
+.container {
+  height: 90vh;
+  text-align: center;
+  font-size: 48px;
+}
+
+.catHead {
+  margin-bottom: 5px;
+}
+
+.line {
+  background-color: black;
+  height: 4px;
+  margin: auto;
+  width: 90vw;
+  border-radius: 100%;
+}
+.itemCon {
+  margin: auto;
+  margin-top: 5px;
+  width: 90vw;
+  display: flex;
+}
+.item {
+  background-color: #e8f6ef;
+  border-radius: 20px;
+  margin-left: 10px;
+  height: 150px;
+  width: 130px;
+  display: inline-block;
+}
+.itemImg {
+  margin: auto;
+  margin-top: 10px;
+  height: 70px;
+  width: 100px;
+  border-radius: 20px 0px 20px 0px;
+}
+.itemName {
+  margin: 0px;
+  margin-top: 0px;
+  font-size: 25px;
+  font-weight: Bold;
+  color: #4c4c6d;
+}
+.plusCon {
+  background-color: #e8f6ef;
+  border-radius: 20px;
+  margin-left: 10px;
+  height: 150px;
+  width: 130px;
+  display: flex;
+  align-items: center;
+}
+.plus {
+  align-self: center;
+  height: 70px;
+  width: 100px;
+  margin: auto;
+  border-radius: 100%;
+}
