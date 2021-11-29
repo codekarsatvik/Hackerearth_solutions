@@ -1,7 +1,17 @@
 .container {
   height: 90vh;
+  overflow: scroll;
   text-align: center;
   font-size: 48px;
+}
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .catHead {
@@ -18,8 +28,11 @@
 .itemCon {
   margin: auto;
   margin-top: 5px;
-  width: 90vw;
-  display: flex;
+  width: auto;
+  height: auto;
+  border: 2px;
+  border-color: black;
+  display: float;
 }
 .item {
   background-color: #e8f6ef;
@@ -28,6 +41,8 @@
   height: 150px;
   width: 130px;
   display: inline-block;
+  margin-bottom: 10px;
+  text-decoration: none;
 }
 .itemImg {
   margin: auto;
@@ -42,20 +57,22 @@
   font-size: 25px;
   font-weight: Bold;
   color: #4c4c6d;
+  text-decoration: overline;
+  text-decoration-color: black;
 }
 .plusCon {
   background-color: #e8f6ef;
   border-radius: 20px;
   margin-left: 10px;
+  margin-bottom: 10px;
   height: 150px;
   width: 130px;
-  display: flex;
-  align-items: center;
+  display: inline-block;
 }
 .plus {
-  align-self: center;
+  margin: auto;
+  margin-top: 10px;
   height: 70px;
   width: 100px;
-  margin: auto;
   border-radius: 100%;
 }

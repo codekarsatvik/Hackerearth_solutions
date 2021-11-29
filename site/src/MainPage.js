@@ -29,24 +29,24 @@ const MainPage = () => {
             </div>
             <div className={mainpage.line} ></div>
             <div className={mainpage.itemCon} >
-            {cat.map((p)=>{
+             {cat.map((p)=>{
                 return(
                     <div className={mainpage.item} key={p.id} >
                         <img src={p.CategoryImg?p.CategoryImg:def_img} className={mainpage.itemImg} ></img>
                         <p className={mainpage.itemName}>{p.CategoryName}</p>
                     </div>
                 )
-            })}
-
-            <label>
-            {/* <div className={mainpage.plusCon}>  */}
+             })}
+             {/* <div className={mainpage.item}>  */}
                 <Link to={{ 
                             pathname: '/category', 
                             state:loc.state 
-                            }} className={mainpage.plusCon} ><img src={plus} className={mainpage.plus} /> </Link>
-            {/* </div> */}
+                            }} className={mainpage.item} > 
+                            <img src={plus} className={mainpage.plus} />
+                            <p className={mainpage.itemName}>Add</p>
+                            </Link>
+             {/* </div> */}
             
-            </label>
             </div>
         </div>
     )
