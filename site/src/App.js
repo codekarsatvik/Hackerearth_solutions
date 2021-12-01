@@ -8,7 +8,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import MainPage from './MainPage';
 import Category from './Forms/category';
 import SubCategory from './SubCategory';
-import Subcategoryform from './Forms/Subcategoryform';
+import Subcategoryform from './Forms/subcategory';
 
 function App() {
   return (
@@ -33,6 +33,11 @@ function App() {
           <Route path='/subCategory'> 
               <MainHeader /> 
               <SubCategory/>
+              <Footer/>
+          </Route>
+          <Route path='/questionform'> 
+              <MainHeader />
+              <Subcategoryform/> 
               <Footer/>
           </Route>
           <Route path='/login'> 

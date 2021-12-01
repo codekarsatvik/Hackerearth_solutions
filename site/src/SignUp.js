@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Image from './UploadImage'
-import { motion } from 'framer-motion';
+ // import { motion } from 'framer-motion';
 import login from './Css/login.module.css'
 import google from './images/google.svg'
 import { db, storage } from "./firebase/config";
@@ -75,10 +75,12 @@ const SignUp = () => {
         <>
             <article className={login.loginContainer}>
                 <form className={login.form} onSubmit={handleUpload}>
-                   <motion.div className={login.progressbar}
+                   {/* <motion.div className={login.progressbar}
                        initial={{ width: 0 }}
                        animate={{ width: progress + '%' }}
-                  ></motion.div>
+                  >
+                      
+                  </motion.div> */}
                     <div style={{ flexDirection: "row", alignItems: "center", justifyContent: "center",textAlign:'center'}}>
                         {/* <Image def={Def_img} imge={url} setUrl={setUrl}/> */}
                          
