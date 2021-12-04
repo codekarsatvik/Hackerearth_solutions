@@ -38,8 +38,8 @@ const SubCategory = () => {
                 {
                     return(
                         <Link to={{ 
-                            pathname: '/subCategory', 
-                            state:{...loc.state,"subID":p.id,"subName":p.CategoryName} 
+                            pathname: '/questionsList', 
+                            state:{...loc.state,"subID":p.id,"subName":p.SubCategoryName} 
                             }} 
                             key={p.id}
                             className={mainpage.item} > 

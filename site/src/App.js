@@ -9,6 +9,9 @@ import MainPage from './MainPage';
 import Category from './Forms/category';
 import SubCategory from './SubCategory';
 import Subcategoryform from './Forms/subcategory';
+import QuestionsList from './QuestionsList';
+import Questions from './Forms/questions';
+import Question from './Question';
 
 function App() {
   return (
@@ -35,9 +38,19 @@ function App() {
               <SubCategory/>
               <Footer/>
           </Route>
+          <Route path='/questionsList'> 
+              <MainHeader />
+              <QuestionsList/> 
+              <Footer/>
+          </Route>
           <Route path='/questionform'> 
               <MainHeader />
-              <Subcategoryform/> 
+              <Questions/> 
+              <Footer/>
+          </Route>
+          <Route path='/question'> 
+              <MainHeader />
+              <Question/>
               <Footer/>
           </Route>
           <Route path='/login'> 
