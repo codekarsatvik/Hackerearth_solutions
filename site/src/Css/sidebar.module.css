@@ -1,0 +1,73 @@
+.container {
+  position: absolute;
+  height: 90vh;
+  background-color: #301b3f;
+  width: 60px;
+  overflow: hidden;
+  transition: 0.6s ease-in-out;
+}
+
+.container:hover {
+  width: 200px;
+}
+
+.container:hover .icons {
+  font-size: 25px;
+}
+
+.container:hover .iconText {
+  display: flex;
+}
+
+.container:hover .item {
+  margin-bottom: 20px;
+}
+
+.container:hover .line {
+  display: flex;
+}
+
+.line {
+  display: none;
+  background-color: white;
+  height: 4px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  width: 80%;
+  border-radius: 20px;
+}
+
+.item {
+  display: flex;
+  color: white;
+  font-size: 50px;
+  margin: 0px;
+  text-decoration: none;
+  margin-bottom: 10px;
+  padding: 5px;
+  align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  justify-content: center;
+}
+
+.icons {
+  font-size: 40px;
+}
+
+.item:hover {
+  background-color: white;
+  color: #301b3f;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bold;
+}
+
+.iconText {
+  display: none;
+  margin: 0px;
+  font-size: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}

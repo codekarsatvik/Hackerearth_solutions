@@ -12,6 +12,7 @@ import Subcategoryform from './Forms/subcategory';
 import QuestionsList from './QuestionsList';
 import Questions from './Forms/questions';
 import Question from './Question';
+import Sidebar from './Sidebar';
 
 function App() {
   return (
@@ -20,46 +21,55 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <MainHeader/>
+            <Sidebar/>
             <MainPage />
             <Footer/>
           </Route>
           <Route path='/category'> 
               <MainHeader />
+              <Sidebar/>
               <Category/> 
               <Footer/>
           </Route>
           <Route path='/subcategoryform'> 
               <MainHeader />
+              <Sidebar/>
               <Subcategoryform/> 
               <Footer/>
           </Route>
           <Route path='/subCategory'> 
               <MainHeader /> 
+              <Sidebar/>
               <SubCategory/>
               <Footer/>
           </Route>
           <Route path='/questionsList'> 
               <MainHeader />
+              <Sidebar/>
               <QuestionsList/> 
               <Footer/>
           </Route>
           <Route path='/questionform'> 
               <MainHeader />
+              <Sidebar/>
               <Questions/> 
               <Footer/>
           </Route>
           <Route path='/question'> 
               <MainHeader />
+              <Sidebar/>
               <Question/>
               <Footer/>
           </Route>
           <Route path='/login'> 
               <MainHeader />
+              <Sidebar/>
               <Login/> 
               <Footer/>
           </Route>
           <Route path='/signup'>
               <MainHeader/>
+              <Sidebar/>
               <SignUp/> 
               <Footer/>
           </Route>

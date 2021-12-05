@@ -4,6 +4,8 @@ import { db, storage } from "./firebase/config";
 import { collection, getDocs, addDoc, updateDoc, doc } from "firebase/firestore"
 import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage"
 import { useLocation,Link } from 'react-router-dom';
+import {HiPlusSm} from "react-icons/hi"
+
 
 const Def_img="https://firebasestorage.googleapis.com/v0/b/hackerearth-soln.appspot.com/o/user-profile.jpg?alt=media&token=0c308286-e24d-4176-a308-2a87901de3e3";
 
@@ -19,7 +21,9 @@ const QuestionsList = () => {
     useEffect(() => {
         const getQues = async() => {
             const data = await getDocs(quesRef);
-            setQues(data.docs.map((doc)=>({...doc.data(),id:doc.id})));
+            const temp=data.docs.map((doc)=>({...doc.data(),id:doc.id}));
+            temp.sort((a, b) => a.QuestionName.localeCompare(b.QuestionName));
+            setQues(temp);
         }
         
         const usersRef = collection(db, "Users");
@@ -42,7 +46,7 @@ const QuestionsList = () => {
                 state:loc.state 
             }} 
             className={question.btn}
-            > Add a Question</Link>
+            ><HiPlusSm className={question.icon} />Add a Question</Link>
             </div>
             <div className={question.line} ></div>
 

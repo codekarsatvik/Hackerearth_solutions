@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Image from './UploadImage'
- // import { motion } from 'framer-motion';
+// import { motion } from "framer-motion";
 import login from './Css/login.module.css'
 import google from './images/google.svg'
 import { db, storage } from "./firebase/config";

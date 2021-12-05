@@ -37,9 +37,9 @@
   margin-bottom: 20px;
 }
 .btn {
-  font-size: 20px;
+  font-size: 18px;
   display: flex;
-  width: 150px;
+  width: auto;
   height: 30px;
   margin-top: auto;
   margin-bottom: 5px;
@@ -51,6 +51,7 @@
   color: white;
   padding: 5px;
   border-radius: 20px;
+  padding-right: 5px;
 }
 
 .itemcon {
@@ -93,4 +94,12 @@
   height: 50px;
   margin-right: 0px;
   width: 1000px;
+}
+
+.icon {
+  margin: 0px;
+  margin-top: -3px;
+  margin-left: 0;
+  margin-right: -5px;
+  font-size: 30px;
 }

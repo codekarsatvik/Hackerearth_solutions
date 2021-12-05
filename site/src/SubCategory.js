@@ -5,6 +5,8 @@ import mainpage from './Css/mainpage.module.css'
 import { db, storage } from "./firebase/config";
 import { collection, getDocs, addDoc, updateDoc, doc } from "firebase/firestore"
 import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage"
+import {HiPlusSm} from "react-icons/hi"
+
 
 const def_img="https://firebasestorage.googleapis.com/v0/b/hackerearth-soln.appspot.com/o/images.png?alt=media&token=5dd85123-c1f2-4a6a-8bec-2c80d56b751c";
 const plus="https://firebasestorage.googleapis.com/v0/b/hackerearth-soln.appspot.com/o/Plus.jpg?alt=media&token=591a5d92-b5e3-4561-949b-8a64b34ab1b6";
@@ -19,7 +21,9 @@ const SubCategory = () => {
     useEffect(() => {
        const getSub=async()=>{
            const data=await getDocs(subRef);
-           setsub(data.docs.map((doc)=>({...doc.data(),id:doc.id})));
+           const temp=data.docs.map((doc)=>({...doc.data(),id:doc.id}));
+           temp.sort((a, b) => a.SubCategoryName.localeCompare(b.SubCategoryName));
+           setsub(temp);
        }
        getSub();
 
@@ -61,8 +65,7 @@ const SubCategory = () => {
                             pathname: '/subcategoryform', 
                             state:loc.state 
                             }} className={mainpage.item} > 
-                            <img src={plus} className={mainpage.plus} />
-                            <p className={mainpage.itemName}>Add</p>
+                             <HiPlusSm className={mainpage.plus}/>
                             </Link>
              {/* </div> */}
             

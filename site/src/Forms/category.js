@@ -74,7 +74,7 @@ const Category = () => {
                                 setName(e.target.value);
                             }}
                         />  
-                        <button type='submit' className={login.btnLogin} style={{alignSelf:'center'}} >Add Category</button>
+                        <button type='submit' className={login.btnLogin} style={{alignSelf:'center',width:"auto"}} >Add Category</button>
                     </div>
                 </form>
             </article>    
