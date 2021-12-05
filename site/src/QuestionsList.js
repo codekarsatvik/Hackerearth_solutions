@@ -51,7 +51,7 @@ const QuestionsList = () => {
             <div className={question.line} ></div>
 
             {/* search bar */}
-
+            <input type='search' value='Question Name'/>
             <div className={question.itemcon}>
             {ques.map((q)=>{
                 if(q.SubCategoryId===loc.state.subID){
