@@ -16,6 +16,8 @@ const QuestionsList = () => {
     const quesRef = collection(db,"Questions");
     const [ques,setQues] = useState([]);
     const [users,setUsers]=useState([]);
+    const [search,setSearch]=useState('');
+
     const loc=useLocation();
     let url='';
     useEffect(() => {
@@ -51,10 +53,11 @@ const QuestionsList = () => {
             <div className={question.line} ></div>
 
             {/* search bar */}
-            <input type='search' value='Question Name'/>
             <div className={question.itemcon}>
+            <input type='search' value={search} className={question.search} placeholder='Question Name' onChange={(e)=>{setSearch(e.target.value)}} />
             {ques.map((q)=>{
-                if(q.SubCategoryId===loc.state.subID){
+               
+                if(q.SubCategoryId===loc.state.subID&&q.QuestionName.toLowerCase().includes(search.toLowerCase())){
                 return(
                     <Link
                     to={{ 
