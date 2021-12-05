@@ -54,6 +54,7 @@ const QuestionsList = () => {
 
             <div className={question.itemcon}>
             {ques.map((q)=>{
+                if(q.SubCategoryId===loc.state.subID){
                 return(
                     <Link
                     to={{ 
@@ -75,8 +76,11 @@ const QuestionsList = () => {
                         {(url)?(<img src={(url)}  style={{width: "40px",height: "40px",borderRadius: "50px"}} />):(<img src={Def_img}  style={{ width: "40px",height: "40px",borderRadius: "50px"}} />)}
                         {url=""} 
                         <p style={{marginRight:"15px"}}>{q.SolvedBy}</p>
-                    </Link>
-                )
+                    </Link>)}
+                    else
+                    {
+                        return(<></>)
+                    }
                 
             })}
             </div>
