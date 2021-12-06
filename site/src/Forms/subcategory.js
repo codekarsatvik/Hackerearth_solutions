@@ -64,7 +64,7 @@ const Subcategoryform = () => {
                             type="file" 
                             accept="image/*" 
                             style={{display:"none"}} 
-                            onChange={(e) => handler(e)}/>
+                            onChange={(e) => handler(e)} required />
                             </label>
                         </div>    
                         <input
@@ -75,6 +75,7 @@ const Subcategoryform = () => {
                             onChange={(e)=>{
                                 setName(e.target.value);
                             }}
+                            required
                         />  
                         <button type='submit' className={login.btnLogin} style={{alignSelf:'center',width:"auto"}} >Add Sub Category</button>
                     </div>

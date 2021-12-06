@@ -28,11 +28,12 @@
 .itemCon {
   margin: auto;
   margin-top: 5px;
-  width: auto;
+  width: 90vw;
   height: auto;
   border: 2px;
   border-color: black;
-  display: float;
+  margin-left: 7.5vw;
+  margin-bottom: 20px;
 }
 .item {
   background-color: #ddf8f4;
@@ -40,20 +41,20 @@
   margin-left: 20px;
   height: 220px;
   width: 190px;
-  display: inline-block;
   margin-bottom: 20px;
   text-decoration: none;
+  float: left;
 }
 .itemImg {
   margin: auto;
-  margin-top: 40px;
+  margin-top: 20px;
   height: 120px;
   width: 120px;
   border-radius: 20px 0px 20px 0px;
 }
 .itemName {
   margin: 0px;
-  margin-top: 0px;
+  padding: 0px;
   font-size: 25px;
   font-weight: Bold;
   font-family: "Patua One";
@@ -62,7 +63,7 @@
 
 .plus {
   margin: auto;
-  margin-top: 45px;
+  margin-top: 25px;
   padding-top: 0px;
   font-size: 150px;
   color: #4c4c6d;

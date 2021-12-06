@@ -65,6 +65,7 @@ const Questions = () => {
                             onChange={(e)=>{
                                 SetQuestionName(e.target.value);
                             }}
+                            required
                         />  
 
                         <input
@@ -75,6 +76,7 @@ const Questions = () => {
                             onChange={(e)=>{
                                 SetQuestionLink(e.target.value);
                             }}
+                            required
                         />  
 
                         <input
@@ -85,6 +87,7 @@ const Questions = () => {
                             onChange={(e)=>{
                                 SetSolutionLink(e.target.value);
                             }}
+                            required
                         />  
 
                         <input
@@ -95,6 +98,7 @@ const Questions = () => {
                             onChange={(e)=>{
                                 SetSolvedBy(e.target.value);
                             }}
+                            required
                         />  
 
                         <input
@@ -105,6 +109,7 @@ const Questions = () => {
                             onChange={(e)=>{
                                 SetDifficulty(e.target.value);
                             }}
+                            required
                         />  
 
                         <button type='submit' className={login.btnLogin} style={{alignSelf:'center',width:"auto"}} >Add a Question</button>

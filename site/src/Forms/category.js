@@ -62,7 +62,7 @@ const Category = () => {
                             type="file" 
                             accept="image/*" 
                             style={{display:"none"}} 
-                            onChange={(e) => handler(e)}/>
+                            onChange={(e) => handler(e)} required />
                             </label>
                         </div>    
                         <input
@@ -73,6 +73,7 @@ const Category = () => {
                             onChange={(e)=>{
                                 setName(e.target.value);
                             }}
+                            required
                         />  
                         <button type='submit' className={login.btnLogin} style={{alignSelf:'center',width:"auto"}} >Add Category</button>
                     </div>

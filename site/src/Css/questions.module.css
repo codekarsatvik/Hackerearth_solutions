@@ -24,7 +24,7 @@
 
 .subHead {
   margin-bottom: 5px;
-  margin-left: 42vw;
+  margin-left: 4.5vw;
   margin-right: auto;
 }
 
@@ -85,7 +85,6 @@ input[type="search"]::-webkit-search-results-decoration {
   height: 7vh;
   width: 70vw;
   align-items: center;
-  /* justify-content: center; */
   margin-bottom: 20px;
 }
 

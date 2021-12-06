@@ -51,10 +51,13 @@ const QuestionsList = () => {
             ><HiPlusSm className={question.icon} />Add a Question</Link>
             </div>
             <div className={question.line} ></div>
-
-            {/* search bar */}
             <div className={question.itemcon}>
             <input type='search' value={search} className={question.search} placeholder='Question Name' onChange={(e)=>{setSearch(e.target.value)}} />
+            <div style={{display:'flex',fontSize:"30px",width:'70vw',backgroundColor:"#301b3f",height:'8vh',marginBottom:'10px',color:'white',paddingLeft:'5px',paddingRight:'5px',borderRadius:"20px 20px 0px 0px"}}>
+            <p style={{margin:'auto',marginLeft:"1vw",width:"30vw",textAlign:"left"}} >Question Name</p>
+            <p style={{margin:"auto",fontSize:'auto'}}>Difficulty</p>
+            <p style={{margin:'auto',textAlign:'right',width:"30vw",textAlign:'right',marginRight:'1vw'}} >SolvedBy</p>
+            </div>
             {ques.map((q)=>{
                
                 if(q.SubCategoryId===loc.state.subID&&q.QuestionName.toLowerCase().includes(search.toLowerCase())){
@@ -67,18 +70,19 @@ const QuestionsList = () => {
                     key={q.id}
                     className={question.item}
                     >
-                        <p style={{marginLeft:"15px"}} >{q.QuestionName}</p>
-                        <p style={{margin:"auto"}}>{q.Difficulty}</p>
-                        <p >Solved by : </p>
+                        <p style={{marginLeft:"1vw",width:"30vw",textAlign:"left"}} >{q.QuestionName}</p>
+                        <p style={{margin:"auto",fontSize:'auto'}}>{q.Difficulty}</p>
+                        <div style={{width:"auto",height:"5vh",display:'flex',marginRight:'1vw',width:"30vw",justifyContent:"right"}} >
                         {users.map((u)=>{
                             if(u.email===q.SolvedBy)
                             {
                                 url=u.url;
                             }
                         })}
-                        {(url)?(<img src={(url)}  style={{width: "40px",height: "40px",borderRadius: "50px"}} />):(<img src={Def_img}  style={{ width: "40px",height: "40px",borderRadius: "50px"}} />)}
+                        {(url)?(<img src={(url)}  style={{borderRadius: "50px"}} />):(<img src={Def_img}  style={{ width: "40px",height: "40px",borderRadius: "50px"}} />)}
                         {url=""} 
-                        <p style={{marginRight:"15px"}}>{q.SolvedBy}</p>
+                        <p style={{textAlign:'right'}} >{q.SolvedBy}</p>
+                        </div>
                     </Link>)}
                     else
                     {
