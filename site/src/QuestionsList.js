@@ -1,10 +1,13 @@
 import React,{useState,useEffect} from 'react'
 import question from './Css/questions.module.css'
 import { db, storage } from "./firebase/config";
-import { collection, getDocs, addDoc, updateDoc, doc } from "firebase/firestore"
+import { collection, getDocs, addDoc, updateDoc, doc,deleteDoc } from "firebase/firestore"
 import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage"
-import { useLocation,Link } from 'react-router-dom';
-import {HiPlusSm} from "react-icons/hi"
+import { useLocation,Link,Redirect } from 'react-router-dom';
+import {HiPlusSm} from "react-icons/hi";
+import {MdDelete} from "react-icons/md";
+import {RiEditBoxLine} from "react-icons/ri";
+import QuestionPopup from './Forms/QuestionPopup';
 
 
 const Def_img="https://firebasestorage.googleapis.com/v0/b/hackerearth-soln.appspot.com/o/user-profile.jpg?alt=media&token=0c308286-e24d-4176-a308-2a87901de3e3";
@@ -17,6 +20,15 @@ const QuestionsList = () => {
     const [ques,setQues] = useState([]);
     const [users,setUsers]=useState([]);
     const [search,setSearch]=useState('');
+    const [flag,setFlag] =useState(false);
+
+    const [QuestionName,SetQuestionName]=useState('');
+    const [QuestionLink,SetQuestionLink]=useState('');
+    const [SolutionLink,SetSolutionLink]=useState('');
+    const [SolvedBy,SetSolvedBy]=useState('');
+    const [Difficulty,SetDifficulty]=useState(''); 
+    const [id,setId]=useState('');
+    const [d,setD]=useState(1);
 
     const loc=useLocation();
     let url='';
@@ -38,17 +50,37 @@ const QuestionsList = () => {
         getUsers();
 
 
-    },[])
+    },[flag,d])
+
+    if(!loc.state||!loc.state.subName)
+    {
+        return(
+            <Redirect to='/'/>
+        )
+    }
+
+    const handleDelete=async(i)=>{
+        const userDoc=doc(db,"Questions",i);
+        await deleteDoc(userDoc);
+        let temp=d;
+        setD(1-temp);
+    }
+
     return (
         <div className={question.container}>
+            {flag&&<QuestionPopup setFlag={setFlag} qn={QuestionName} ql={QuestionLink} sl={SolutionLink} sb={SolvedBy} df={Difficulty} id={id} />}
             <div style={{display:'flex',justifyContent:'center'}}>
             <p className={question.subHead}>{loc.state.subName}</p>
-            <Link  to={{ 
-                pathname: '/questionform', 
-                state:loc.state 
-            }} 
-            className={question.btn}
-            ><HiPlusSm className={question.icon} />Add a Question</Link>
+            <div className={question.btn} onClick={()=>{
+                setId('')
+                SetQuestionName('');
+                SetQuestionLink('');
+                SetSolutionLink('');
+                SetSolvedBy('');
+                SetDifficulty('');
+                setFlag(true);
+                }} >
+            <HiPlusSm className={question.icon} />Add a Question</div>
             </div>
             <div className={question.line} ></div>
             <div className={question.itemcon}>
@@ -62,17 +94,17 @@ const QuestionsList = () => {
                
                 if(q.SubCategoryId===loc.state.subID&&q.QuestionName.toLowerCase().includes(search.toLowerCase())){
                 return(
+                    <div style={{display:'flex',justifyContent:'center'}} key={q.id} >
                     <Link
                     to={{ 
                         pathname: '/question', 
                         state:{...loc.state,"quesID":q.id,"quesName":q.QuestionName,"quesLink":q.QuestionLink,"solLink":q.SolutionLink} 
                     }} 
-                    key={q.id}
                     className={question.item}
                     >
                         <p style={{marginLeft:"1vw",width:"30vw",textAlign:"left"}} >{q.QuestionName}</p>
                         <p style={{margin:"auto",fontSize:'auto'}}>{q.Difficulty}</p>
-                        <div style={{width:"auto",height:"5vh",display:'flex',marginRight:'1vw',width:"30vw",justifyContent:"right"}} >
+                        <div style={{width:"auto",height:"5vh",display:'flex',marginRight:'0.5vw',width:"30vw",justifyContent:"right"}} >
                         {users.map((u)=>{
                             if(u.email===q.SolvedBy)
                             {
@@ -83,10 +115,31 @@ const QuestionsList = () => {
                         {url=""} 
                         <p style={{textAlign:'right'}} >{q.SolvedBy}</p>
                         </div>
-                    </Link>)}
+                        
+                    </Link>
+                    <div style={{display:'flex',flexDirection:'row',marginLeft:'1vw',marginTop:'2vh'}} >
+                            <div className={question.icons} onClick={()=>{
+                                setId(q.id)
+                                SetQuestionName(q.QuestionName);
+                                SetQuestionLink(q.QuestionLink);
+                                SetSolutionLink(q.SolutionLink);
+                                SetSolvedBy(q.SolvedBy);
+                                SetDifficulty(q.Difficulty);
+                                setFlag(true);
+                            }} >
+                            <RiEditBoxLine/>
+                            </div>
+
+                             <div className={question.icons} onClick={()=>handleDelete(q.id)} >
+                            <MdDelete  />
+                            </div>
+                    </div> 
+                    </div>)
+
+                    }
                     else
                     {
-                        return(<></>)
+                        return(<div key={q.id}></div>)
                     }
                 
             })}

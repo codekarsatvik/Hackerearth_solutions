@@ -6,9 +6,7 @@ import SignUp from './SignUp.js'
 import {Route, Switch} from 'react-router-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 import MainPage from './MainPage';
-import Category from './Forms/category';
 import SubCategory from './SubCategory';
-import Subcategoryform from './Forms/subcategory';
 import QuestionsList from './QuestionsList';
 import Questions from './Forms/questions';
 import Question from './Question';
@@ -24,18 +22,6 @@ function App() {
             <Sidebar/>
             <MainPage />
             <Footer/>
-          </Route>
-          <Route path='/category'> 
-              <MainHeader />
-              <Sidebar/>
-              <Category/> 
-              <Footer/>
-          </Route>
-          <Route path='/subcategoryform'> 
-              <MainHeader />
-              <Sidebar/>
-              <Subcategoryform/> 
-              <Footer/>
           </Route>
           <Route path='/subCategory'> 
               <MainHeader /> 

@@ -52,6 +52,8 @@
   padding: 5px;
   border-radius: 20px;
   padding-right: 5px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .search {
@@ -89,7 +91,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .item p {
-  color: black;
+  color: #301b3f;
   margin: 0px;
 }
 
@@ -119,4 +121,11 @@ input[type="search"]::-webkit-search-results-decoration {
   margin-left: 0;
   margin-right: -5px;
   font-size: 30px;
+}
+
+.icons {
+  font-size: 25px;
+  color: #301b3f;
+  cursor: pointer;
+  margin: 0px;
 }

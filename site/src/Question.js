@@ -1,10 +1,17 @@
 import React from 'react';
 import question from './Css/questions.module.css'
-import { useLocation } from 'react-router-dom';
+import { useLocation,Redirect } from 'react-router-dom';
 
 const Question = () => {
     const loc=useLocation();
     console.log(loc);
+    if(!loc.state||!loc.state.quesName)
+    {
+        return(
+            <Redirect to='/'/>
+        )
+    }
+
     return (
         <div className={question.container} >
              <p className={question.quesHead}>{loc.state.quesName}</p>
