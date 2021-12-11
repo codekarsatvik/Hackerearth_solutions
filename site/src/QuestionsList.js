@@ -1,8 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import question from './Css/questions.module.css'
-import { db, storage } from "./firebase/config";
-import { collection, getDocs, addDoc, updateDoc, doc,deleteDoc } from "firebase/firestore"
-import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage"
+import { db } from "./firebase/config";
+import { collection, getDocs, doc,deleteDoc } from "firebase/firestore"
 import { useLocation,Link,Redirect } from 'react-router-dom';
 import {HiPlusSm} from "react-icons/hi";
 import {MdDelete} from "react-icons/md";
@@ -106,7 +105,7 @@ const QuestionsList = () => {
                         <p style={{margin:"auto",fontSize:'auto'}}>{q.Difficulty}</p>
                         <div style={{width:"auto",height:"5vh",display:'flex',marginRight:'0.5vw',width:"30vw",justifyContent:"right"}} >
                         {users.map((u)=>{
-                            if(u.email===q.SolvedBy)
+                            if(u.userName===q.SolvedBy)
                             {
                                 url=u.url;
                             }

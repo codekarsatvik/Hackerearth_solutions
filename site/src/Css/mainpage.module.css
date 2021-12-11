@@ -4,6 +4,7 @@
   text-align: center;
   font-size: 48px;
 }
+
 .container::-webkit-scrollbar {
   display: none;
 }
@@ -25,6 +26,7 @@
   width: 90vw;
   border-radius: 100%;
 }
+
 .itemCon {
   margin: auto;
   margin-top: 5px;

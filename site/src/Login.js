@@ -3,12 +3,12 @@ import {Link,useHistory} from 'react-router-dom'
 import login from './Css/login.module.css'
 import logo from './images/logo.svg'
 import google from './images/google.svg'
-import { db, storage } from "./firebase/config";
-import { collection, getDocs, addDoc, updateDoc, doc } from "firebase/firestore";
+import { db} from "./firebase/config";
+import { collection, getDocs } from "firebase/firestore";
 
 
 const Login = () => {
-    const [email,setEmail] = useState('');
+    const [userName,setUserName] = useState('');
     const [password,setPassword] = useState('');
     const [users,setUsers]=useState([]);
     let history=useHistory();
@@ -29,7 +29,7 @@ const Login = () => {
         let flag=false;
         let level=0;
         users.map((user)=>{
-            if(user.email==email&&password==user.password)
+            if(user.userName==userName&&password==user.password)
             {
                 flag=true;
                 level=user.level;
@@ -41,7 +41,7 @@ const Login = () => {
         }
         else
         {
-           history.push("/",{authorized:true,email,level});
+           history.push("/",{authorized:true,userName,level});
         }
     }
 
@@ -53,11 +53,11 @@ const Login = () => {
                     <div className={login.formControl}>
                          <img src={logo} className={login.logo} />
                         <input 
-                            type='email'
-                            value={email}
-                            placeholder='Email'
+                            value={userName}
+                            placeholder='UserName'
                             style={{borderStyle:"none"}}
-                            onChange={(e) => setEmail(e.target.value)}
+                            onChange={(e) => setUserName(e.target.value)}
+                            required
                         />
                         <input
                             type='password'
@@ -65,6 +65,7 @@ const Login = () => {
                             placeholder='Password'
                             style={{borderStyle:"none"}}
                             onChange={(e) => setPassword(e.target.value)}
+                            required
                         />
                     </div>
                     <p className={login.pass}>Forgot Password?</p>

@@ -1,4 +1,3 @@
-import logo from './images/logo.svg';
 import MainHeader from './MainHeader';
 import Footer from './Footer';
 import Login from './Login.js'
@@ -8,9 +7,9 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import MainPage from './MainPage';
 import SubCategory from './SubCategory';
 import QuestionsList from './QuestionsList';
-import Questions from './Forms/questions';
 import Question from './Question';
 import Sidebar from './Sidebar';
+import Users from './Users';
 
 function App() {
   return (
@@ -35,12 +34,6 @@ function App() {
               <QuestionsList/> 
               <Footer/>
           </Route>
-          <Route path='/questionform'> 
-              <MainHeader />
-              <Sidebar/>
-              <Questions/> 
-              <Footer/>
-          </Route>
           <Route path='/question'> 
               <MainHeader />
               <Sidebar/>
@@ -59,6 +52,14 @@ function App() {
               <SignUp/> 
               <Footer/>
           </Route>
+
+          <Route path='/users'> 
+              <MainHeader />
+              <Sidebar/>
+              <Users/>
+              <Footer/>
+          </Route>
+
         </Switch>
       </Router>
     </>

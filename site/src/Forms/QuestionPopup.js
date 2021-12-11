@@ -1,10 +1,7 @@
 import React,{useState,useEffect} from 'react'
-import logo from '../images/logo.svg'
 import login from '../Css/login.module.css'
-import Image from '../UploadImage'
-import { db, storage } from "../firebase/config";
+import { db } from "../firebase/config";
 import { collection, getDocs, addDoc, updateDoc, doc } from "firebase/firestore"
-import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage"
 import { useLocation } from 'react-router-dom';
 import popup from "../Css/popup.module.css";
 import {GrFormClose} from "react-icons/gr"

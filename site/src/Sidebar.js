@@ -15,7 +15,7 @@ const Sidebar = () => {
             <p className={sidebar.iconText} >Profile</p>
             </Link>
 
-            <Link className={sidebar.item}>
+            <Link className={sidebar.item} to='/users' >
             <FiUsers className={sidebar.icons}/>
             <p className={sidebar.iconText} >Users</p>
             </Link>

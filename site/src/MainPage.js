@@ -1,11 +1,9 @@
 import React,{useEffect,Redirect} from 'react';
 import { useLocation,Link } from 'react-router-dom';
 import mainpage from './Css/mainpage.module.css';
-import { db, storage } from "./firebase/config";
-import { collection, getDocs, addDoc, updateDoc, doc,deleteDoc } from "firebase/firestore";
-import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage";
+import { db } from "./firebase/config";
+import { collection, getDocs, doc,deleteDoc } from "firebase/firestore";
 import { useState } from 'react/cjs/react.development';
-import Sidebar from './Sidebar';
 import {HiPlusSm} from "react-icons/hi";
 import {MdDelete} from "react-icons/md";
 import {RiEditBoxLine} from "react-icons/ri";

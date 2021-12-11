@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import Image from './UploadImage'
+import React, { useState,useEffect } from 'react'
+import { Link,useHistory } from 'react-router-dom'
 // import { motion } from "framer-motion";
 import login from './Css/login.module.css'
-import google from './images/google.svg'
 import { db, storage } from "./firebase/config";
-import { collection, getDocs, addDoc, updateDoc, doc } from "firebase/firestore"
+import { collection, addDoc,getDocs} from "firebase/firestore"
 import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage"
 
 const Def_img="https://firebasestorage.googleapis.com/v0/b/hackerearth-soln.appspot.com/o/user-profile.jpg?alt=media&token=0c308286-e24d-4176-a308-2a87901de3e3"
 
 
 const SignUp = () => {
+    let history=useHistory();
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -19,28 +18,58 @@ const SignUp = () => {
     const [users, setUsers] = useState([]);
     const [progress,setProgress]=useState(0);
     const [url,setUrl]=useState('');
+    const [userName,setUserName]=useState('');
 
     const usersRef = collection(db, "Users");
 
-    // useEffect(() => {
-    //    const getUsers=async()=>{
-    //        const data=await getDocs(usersRef);
-    //        setUsers(data.docs.map((doc)=>({...doc.data(),id:doc.id})));
-    //        console.log(users)
-    //    }
+    useEffect(() => {
+       const getUsers=async()=>{
+           const data=await getDocs(usersRef);
+           setUsers(data.docs.map((doc)=>({...doc.data(),id:doc.id})));           
+       }
+       getUsers();
 
-    // },[])
+    },[])
 
     const handleUpload = (e) => {
         e.preventDefault();
+
+        console.log(users);
         const add = async () => {
             const docRef = await addDoc(collection(db, "Users"), {
-                firstName, lastName, email, password, url, "level": 1
+                firstName, lastName,userName, email, password, url, "level": 1
             });
             console.log(docRef.id);
         }
-        add();
-        console.log("Done");
+
+        let flag1=false;
+        let flag2=false;
+        users.map((u)=>{
+            if(u.userName===userName)
+            {
+                flag1=true;
+            }
+            if(u.email===email)
+            {
+                flag2=true;
+            }
+        })
+        if(flag1||flag2)
+        {
+            if(flag1)
+            {
+                alert('User Name already exists!');
+            }
+            if(flag2)
+            {
+                alert('Email is already registered');
+            }
+        }
+        else
+        {
+            add();
+            history.push("/login");
+        }
 
     }
 
@@ -120,6 +149,15 @@ const SignUp = () => {
                             onChange={(e) => setEmail(e.target.value)}
                         required
                         />
+
+                        <input
+                            value={userName}
+                            placeholder='Username'
+                            style={{ borderStyle: "none" }}
+                            onChange={(e) => setUserName(e.target.value)}
+                        required
+                        />
+
                         <input
                             type='password'
                             value={password}
