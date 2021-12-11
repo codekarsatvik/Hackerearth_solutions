@@ -54,6 +54,7 @@
   height: 120px;
   width: 120px;
   border-radius: 20px 0px 20px 0px;
+  object-fit: cover;
 }
 .itemName {
   margin: 0px;

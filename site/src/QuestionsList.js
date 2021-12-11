@@ -110,7 +110,7 @@ const QuestionsList = () => {
                                 url=u.url;
                             }
                         })}
-                        {(url)?(<img src={(url)}  style={{borderRadius: "50px"}} />):(<img src={Def_img}  style={{ width: "40px",height: "40px",borderRadius: "50px"}} />)}
+                        {(url)?(<img src={(url)}  style={{borderRadius: "50px",objectFit:'cover'}} />):(<img src={Def_img}  style={{ width: "40px",height: "40px",borderRadius: "50px"}} />)}
                         {url=""} 
                         <p style={{textAlign:'right'}} >{q.SolvedBy}</p>
                         </div>
