@@ -1,18 +1,9 @@
 from django.contrib import admin
-from .models import Category
-from .models import Subcategory
-from .models import Question
+from .models import Meet
 
-# Register your models here.
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id','category')
-admin.site.register(Category,CategoryAdmin)
+class MeetAdmin(admin.ModelAdmin):
+    list_display = ('id','starting_time', 'ending_time', 'meeting_link','description', )
 
-class SubcategoryAdmin(admin.ModelAdmin):
-    list_display = ('id','category','subcategory')
-admin.site.register(Subcategory,SubcategoryAdmin)
+admin.site.register(Meet, MeetAdmin)
 
-class QuestionAdmin(admin.ModelAdmin):
-    list_display = ('id','category','subcategory','question_link','answer_link')
-admin.site.register(Question,QuestionAdmin)
-
+# admin.site.register(Meet)

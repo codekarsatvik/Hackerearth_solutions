@@ -7,6 +7,12 @@ from django.forms import fields, widgets
 from django.utils.translation import gettext,gettext_lazy as _
 
 
+class MeetingForm(forms.Form):
+    starting_time = forms.DateTimeField(label='Starting Time(yyyy-mm-dd hr:min:sec)',widget=forms.DateTimeInput(attrs={'class':'form-control'}))
+    ending_time=forms.DateTimeField(label='Ending Time(yyyy-mm-dd hr:min:sec)',widget=forms.DateTimeInput(attrs={'class':'form-control'}))
+    meeting_link=forms.CharField(label='Meeting Link', widget=forms.URLInput(attrs={'class':'form-control'}))
+    description = forms.CharField(label='Description',max_length=200,widget=forms.TextInput(attrs={'class':'form-control','rows':'2'}))
+
 class CustomerRegistrationForm(UserCreationForm) :
     password1=forms.CharField(label='Password',widget=forms.PasswordInput(attrs={'class':'form-control'}))
     password2=forms.CharField(label='Confirm Password (again)',widget=forms.PasswordInput(attrs={'class':'form-control'}))
